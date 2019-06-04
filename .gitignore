@@ -1,3 +1,5 @@
 node_modules/
-default.json
+
+# Super secret stuff
 .env
+config/default.json
