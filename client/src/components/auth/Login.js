@@ -23,7 +23,6 @@ const Login = ({ login }) => {
 
   return (
     <Fragment>
-      <div className="alert alert-danger">Invalid credentials</div>
       <h1 className="large text-primary">Sign In</h1>
       <p className="lead">
         <i className="fas fa-user" /> Sign into Your Account
@@ -57,7 +56,7 @@ const Login = ({ login }) => {
   );
 };
 
-Login.PropTypes = {
+Login.propTypes = {
   login: PropTypes.func.isRequired
 };
 
