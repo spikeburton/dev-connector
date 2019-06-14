@@ -1,29 +1,33 @@
-import React, { Fragment, useState } from 'react'
-import { Link } from 'react-router-dom'
+import React, { Fragment, useState } from 'react';
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { login } from '../../actions/auth';
 
-const Login = () => {
+const Login = ({ login }) => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     password: ''
-  })
+  });
 
   const { email, password } = formData;
 
   const onChange = e =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
-  const onSubmit = e => {
+  const onSubmit = async e => {
     e.preventDefault();
-  }
+    login(email, password);
+  };
 
   return (
     <Fragment>
-      <div className="alert alert-danger">
-        Invalid credentials
-      </div>
+      <div className="alert alert-danger">Invalid credentials</div>
       <h1 className="large text-primary">Sign In</h1>
-      <p className="lead"><i className="fas fa-user"></i> Sign into Your Account</p>
+      <p className="lead">
+        <i className="fas fa-user" /> Sign into Your Account
+      </p>
       <form className="form" onSubmit={onSubmit}>
         <div className="form-group">
           <input
@@ -50,7 +54,14 @@ const Login = () => {
         Don't have an account? <Link to="/register">Sign Up</Link>
       </p>
     </Fragment>
-  )
-}
+  );
+};
 
-export default Login
+Login.PropTypes = {
+  login: PropTypes.func.isRequired
+};
+
+export default connect(
+  null,
+  { login }
+)(Login);
