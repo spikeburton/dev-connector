@@ -11,7 +11,7 @@ import setAuthToken from '../utils/setAuthToken';
 export const loadUser = () => {
   return async dispatch => {
     if (localStorage.getItem('token')) {
-      setAuthToken(localStorage.token)
+      setAuthToken(localStorage.getItem('token'));
     }
 
     try {
@@ -20,14 +20,14 @@ export const loadUser = () => {
       dispatch({
         type: USER_LOADED,
         payload: res.data
-      })
+      });
     } catch (err) {
       dispatch({
         type: AUTH_ERROR
-      })
+      });
     }
-  }
-}
+  };
+};
 
 export const register = ({ name, email, password }) => {
   return async dispatch => {
