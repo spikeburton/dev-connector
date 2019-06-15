@@ -3,13 +3,12 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { createProfile, getCurrentProfile } from '../../actions/profile';
-import CreateProfile from './CreateProfile';
 
 const EditProfile = ({
   profile: { profile, loading },
   createProfile,
   getCurrentProfile,
-  histpry
+  history
 }) => {
   const [formData, setFormData] = useState({
     company: '',
@@ -247,7 +246,7 @@ const EditProfile = ({
   );
 };
 
-CreateProfile.propTypes = {
+EditProfile.propTypes = {
   createProfile: PropTypes.func.isRequired,
   getCurrentProfile: PropTypes.func.isRequired
 };
@@ -257,6 +256,6 @@ const mapStateToProps = state => ({
 });
 
 export default connect(
-  null,
+  mapStateToProps,
   { createProfile, getCurrentProfile }
 )(withRouter(EditProfile));
