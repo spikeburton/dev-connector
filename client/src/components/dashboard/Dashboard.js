@@ -1,8 +1,10 @@
 import React, { Fragment, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getCurrentProfile } from '../../actions/profile';
+
+import DashboardActions from './DashboardActions';
 
 import Spinner from '../layout/Spinner';
 
@@ -24,11 +26,15 @@ const Dashboard = ({
         <i className="fas fa-user" /> Welcome {user && user.name}
       </p>
       {profile !== null ? (
-        <Fragment>has</Fragment>
+        <Fragment>
+          <DashboardActions />
+        </Fragment>
       ) : (
         <Fragment>
           <p>You have not yet setup a profile, please add some info</p>
-          <Link to="/create-profile" className="btn btn-primary my-1">Create Profile</Link>
+          <Link to="/create-profile" className="btn btn-primary my-1">
+            Create Profile
+          </Link>
         </Fragment>
       )}
     </Fragment>
