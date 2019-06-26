@@ -81,7 +81,13 @@ const AddExperience = props => {
         </div>
         <div className="form-group">
           <h4>To Date</h4>
-          <input type="date" name="to" value={to} onChange={onChange} />
+          <input
+            type="date"
+            name="to"
+            value={to}
+            disabled={toDateDisabled ? 'disabled' : ''}
+            onChange={onChange}
+          />
         </div>
         <div className="form-group">
           <textarea
@@ -89,7 +95,6 @@ const AddExperience = props => {
             cols="30"
             rows="5"
             placeholder="Job Description"
-            disabled={toDateDisabled ? 'disabled' : ''}
             value={description}
             onChange={onChange}
           />
