@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { addExperience } from '../actions/profile';
 import { Link, withRouter } from 'react-router-dom';
 
-const AddExperience = props => {
+const AddExperience = ({ addExperience, history }) => {
   const [formData, setFormData] = useState({
     company: '',
     title: '',
@@ -30,7 +30,10 @@ const AddExperience = props => {
         positions that you have had in the past
       </p>
       <small>* = required field</small>
-      <form className="form">
+      <form className="form" onSubmit={e => {
+        e.preventDefault();
+        addExperience(formData, history)
+      }}>
         <div className="form-group">
           <input
             type="text"
@@ -100,9 +103,9 @@ const AddExperience = props => {
           />
         </div>
         <input type="submit" className="btn btn-primary my-1" />
-        <a className="btn btn-light my-1" href="dashboard.html">
+        <Link className="btn btn-light my-1" to="/dashboard">
           Go Back
-        </a>
+        </Link>
       </form>
     </Fragment>
   );
@@ -115,4 +118,4 @@ AddExperience.propTypes = {
 export default connect(
   null,
   { addExperience }
-)(AddExperience);
+)(withRouter(AddExperience));
