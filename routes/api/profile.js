@@ -7,6 +7,7 @@ const { check, validationResult } = require('express-validator/check');
 
 const Profile = require('../../models/Profile');
 const User = require('../../models/User');
+const Post = require('../../models/Post');
 
 /**
  * @route   GET api/profile/me
@@ -164,7 +165,8 @@ router.get('/user/:user_id', async (req, res) => {
  */
 router.delete('/', auth, async (req, res) => {
   try {
-    // TODO: remove user's posts
+    // Remove user posts
+    await Post.deleteMany({ user: req.user.id });
     // Remove profile
     await Profile.findOneAndRemove({ user: req.user.id });
     await User.findOneAndRemove({ _id: req.user.id });
@@ -381,7 +383,7 @@ router.get('/github/:username', async (req, res) => {
       }
 
       res.json(JSON.parse(body));
-    })
+    });
   } catch (err) {
     console.error(err.message);
     res.status(500).send('Server Error');
