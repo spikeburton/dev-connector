@@ -134,7 +134,7 @@ export const addEducation = (formData, history) => {
 export const deleteExperience = id => {
   return async dispatch => {
     try {
-      const res = await axios.delete(`/api/profile/experience/${{ id }}`);
+      const res = await axios.delete(`/api/profile/experience/${id}`);
 
       dispatch({
         type: UPDATE_PROFILE,
@@ -155,7 +155,7 @@ export const deleteExperience = id => {
 export const deleteEducation = id => {
   return async dispatch => {
     try {
-      const res = await axios.delete(`/api/profile/education/${{ id }}`);
+      const res = await axios.delete(`/api/profile/education/${id}`);
 
       dispatch({
         type: UPDATE_PROFILE,
