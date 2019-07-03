@@ -60,7 +60,7 @@ const EditProfile = ({
           ? ''
           : profile.social.instagram
     });
-  }, [loading, getCurrentProfile]);
+  }, [loading, profile, getCurrentProfile]);
 
   const onChange = e => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
