@@ -16,10 +16,10 @@ const PostItem = ({
   return (
     <div className="post bg-white p-1 my-1">
       <Link>
-        <Link to={`/profile/${user}`}>
-          <img className="round-img" src={avatar} alt="" />
-          <h4>{name}</h4>
-        </Link>
+      <Link to={`/profile/${user}`}>
+        <img className="round-img" src={avatar} alt="" />
+        <h4>{name}</h4>
+      </Link>
       </Link>
       <div>
         <p className="my-1">{text}</p>
